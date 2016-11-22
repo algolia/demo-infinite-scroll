@@ -29,6 +29,5 @@ module.exports = {
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
       }
     ]
-  },
-  watch: true
+  }
 };

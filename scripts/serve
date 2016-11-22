@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+webpack-dev-server --hot --inline --content-base build

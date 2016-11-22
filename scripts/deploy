@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+npm run build
+gh-pages --dist build --branch gh-pages

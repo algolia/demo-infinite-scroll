@@ -4,8 +4,10 @@
   "description": "Demo code illustrating how to do an infinite scroll search results with Algolia",
   "main": "",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline --content-base build",
-    "lint": "eslint ."
+    "serve": "./scripts/serve",
+    "build": "./scripts/build",
+    "lint": "./scripts/lint",
+    "deploy": "./scripts/deploy"
   },
   "keywords": [
     "algolia",
@@ -15,14 +17,15 @@
   "devDependencies": {
     "algoliasearch": "^3.10.2",
     "async": "^1.5.0",
-    "css-loader": "^0.23.1",
     "babel-eslint": "^4.1.6",
+    "css-loader": "^0.23.1",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^3.0.0",
     "eslint-config-algolia": "^4.5.0",
     "eslint-plugin-algolia": "^1.5.0",
     "eslint-plugin-react": "^3.14.0",
     "extract-text-webpack-plugin": "^0.9.1",
+    "gh-pages": "^0.12.0",
     "html-webpack-plugin": "^1.7.0",
     "image-webpack-loader": "^1.6.2",
     "style-loader": "^0.13.0",
@@ -32,8 +35,8 @@
   },
   "dependencies": {
     "instantsearch.js": "^1.1.0",
+    "jquery": "^2.1.4",
     "lodash": "^3.10.1",
-    "mustache": "^2.2.1",
-    "jquery": "^2.1.4"
+    "mustache": "^2.2.1"
   }
 }

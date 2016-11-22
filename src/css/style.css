@@ -234,6 +234,15 @@ header img {
   color: #999;
 }
 
+/* RESOURCES */
+.resources {
+  font-size: .9rem;
+}
+.resources a {
+  color: #1F3B5D;
+  text-decoration: none;
+}
+
 /* NO RESULTS */
 .no-results #sort-by, .no-results #stats, .no-results #facets {
   display: none;

@@ -5,7 +5,7 @@ in results using [Algolia](https://www.algolia.com).
 
 ![Infinite Scroll](./screencast.gif)
 
-You can try the [live demo]() or follow the
+You can try the [live demo](https://community.algolia.com/demo-infinite-scroll/) or follow the
 [guide](https://www.algolia.com/doc/guides/search/infinite-scroll) to build your own.
 
 
