@@ -19,16 +19,16 @@ module.exports = {
     new ExtractTextPlugin('css/[name].css')
   ],
   module: {
-    loaders:[
+    loaders: [
       {
         test: /\.(jpe?g|png|gif|svg)$/,
         loader: 'url-loader?limit=8192'
       },
       {
-        test:  /\.css$/,
+        test: /\.css$/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
       }
     ]
   },
   watch: true
-}
+};

@@ -1,8 +1,9 @@
 # Infinite Scroll Search Results
 
-This is a sample project implementing infinite scroll search results with [Algolia](https://www.algolia.com). Algolia is a search API that provides hosted full-test, numerical and faceted search.
+This is a sample project implementing infinite scroll search results with [Algolia](https://www.algolia.com). Algolia is a search API that provides hosted full-text, numerical and faceted search.
 
 ## Features
+
 * Full-JavaScript/frontend implementation based on [instantsearch.js](https://community.algolia.com/instantsearch.js/)
 * Results page refreshed as you type
 * Hits
@@ -20,7 +21,7 @@ This is a sample project implementing infinite scroll search results with [Algol
 
 ### Build the project
 
-In order to build the application, you need NPM which comes with [Node.js](https://nodejs.org).
+To build the application, you need NPM which comes with [Node.js](https://nodejs.org).
 
 In the command line do:
   - `npm install`  
@@ -39,6 +40,6 @@ $ ./import.js YourApplicationID YourAPIKey YourIndexName
 ```
 
 Then, you'll need to replace the demo credentials with your own:
-- in ```src/js/app.js```, set your own ```APPLICATION_ID``` instead of ```"latency"``` (which is our demo ```APPLICATION_ID```),
-- in ```src/js/app.js```, set your own ```SEARCH_ONLY_API_KEY``` instead of ```"6be0576ff61c053d5f9a3225e2a90f76"```,
-- in ```src/js/app.js```, set your own ```index``` name instead of ```"instant_search"```
+- in `src/js/app.js`, set your own `APPLICATION_ID` instead of `"latency"` (which is our demo `APPLICATION_ID`),
+- in `src/js/app.js`, set your own `SEARCH_ONLY_API_KEY` instead of `"6be0576ff61c053d5f9a3225e2a90f76"`,
+- in `src/js/app.js`, set your own `index` name instead of `"instant_search"`

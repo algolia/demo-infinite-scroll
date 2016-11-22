@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 var algoliasearch = require('algoliasearch');
 var _ = require('lodash');
 var async = require('async');
@@ -28,8 +29,26 @@ var priceAscSettings = _.clone(settings, true);
 indexSettings.ignorePlurals = true;
 indexSettings.slaves = [`${indexBase}_price_desc`, `${indexBase}_price_asc`];
 
-priceDescSettings.ranking = ['desc(price)', 'typo', 'geo', 'words', 'proximity', 'attribute', 'exact', 'custom'];
-priceAscSettings.ranking = ['asc(price)', 'typo', 'geo', 'words', 'proximity', 'attribute', 'exact', 'custom'];
+priceDescSettings.ranking = [
+  'desc(price)',
+  'typo',
+  'geo',
+  'words',
+  'proximity',
+  'attribute',
+  'exact',
+  'custom'
+];
+priceAscSettings.ranking = [
+  'asc(price)',
+  'typo',
+  'geo',
+  'words',
+  'proximity',
+  'attribute',
+  'exact',
+  'custom'
+];
 
 index.setSettings(indexSettings);
 
@@ -44,13 +63,13 @@ index.clearIndex(function (err) {
   }
 });
 
-var finish = function (err) {
+function finish(err) {
   if (err) {
     throw err;
   }
 
   console.log('Imported all products.');
-};
+}
 
 // Index our data
 async.each(chunkedData, index.saveObjects.bind(index), finish);
