@@ -1,6 +1,14 @@
 # Infinite Scroll Search Results
 
-This is a sample project implementing infinite scroll search results with [Algolia](https://www.algolia.com). Algolia is a search API that provides hosted full-text, numerical and faceted search.
+This is a sample project implementing infinite scroll search results with
+[Algolia](https://www.algolia.com). Algolia is a search API that provides hosted
+full-text, numerical and faceted search.
+
+This repository is to be used with the [full
+guide](https://www.algolia.com/doc/guides/search/infinite-scroll) explaining how to build such
+an infinite scroll result page.
+
+![Infinite Scroll](./screencast.gif)
 
 ## Features
 
