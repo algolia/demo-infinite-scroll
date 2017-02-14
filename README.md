@@ -31,8 +31,8 @@ You can try the [live demo](https://community.algolia.com/demo-infinite-scroll/)
 To build the application, you need NPM which comes with [Node.js](https://nodejs.org).
 
 In the command line do:
-  - `npm install`  
-  - `npm start`  
+  - `yarn`
+  - `yarn start`
 
 Then open your browser and go to http://localhost:8080.
 
