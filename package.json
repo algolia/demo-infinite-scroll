@@ -4,7 +4,7 @@
   "description": "Demo code illustrating how to do an infinite scroll search results with Algolia",
   "main": "",
   "scripts": {
-    "serve": "./scripts/serve",
+    "start": "./scripts/serve",
     "build": "./scripts/build",
     "lint": "./scripts/lint",
     "deploy": "./scripts/deploy"
