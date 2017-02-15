@@ -20,7 +20,11 @@ function renderTemplate(template, res) {
 }
 
 function scrolledNearBottom(el, offset) {
-  return (el.scrollHeight - el.scrollTop) < offset;
+  if(window.innerHeight < offset){
+    return (el.scrollHeight - el.scrollTop) < offset;
+  } else{
+    return (el.scrollHeight - el.scrollTop) < window.innerHeight* 2;
+  }
 }
 
 function searchNewRecords() {
