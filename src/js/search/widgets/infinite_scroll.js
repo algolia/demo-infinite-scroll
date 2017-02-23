@@ -19,20 +19,28 @@ function renderTemplate(template, res) {
   return results;
 }
 
-function scrolledNearBottom(el, offset) {
-  var bodyHeight = document.querySelector('body').clientHeight;
-  var pageHeight = document.documentElement.clientHeight;
-  return (bodyHeight - (document.documentElement.scrollTop || document.body.scrollTop) - pageHeight) < offset;
+function scrolledNearBottom(contentHeight, containerHeight, scrollTop, offset) {
+  return (contentHeight - scrollTop - containerHeight) < offset;
+}
+
+function isSearchTriggered(offset) {
+  var body = document.querySelector('body');
+  return scrolledNearBottom(
+    body.clientHeight,
+    document.documentElement.clientHeight,
+    body.scrollTop || document.documentElement.scrollTop,
+    offset
+  );
 }
 
 function searchNewRecords() {
-  if (scrolledNearBottom(document.querySelector('body'), this.offset)) {
+  if (isSearchTriggered(this.offset)) {
     addSearchedRecords.call(this);
   }
 }
 
 function browseNewRecords() {
-  if (scrolledNearBottom(document.querySelector('body'), this.offset)) {
+  if (isSearchTriggered(this.offset)) {
     addBrowsedRecords.call(this);
   }
 }
@@ -68,7 +76,10 @@ function addBrowsedRecords() {
     loading = true;
     // Skip the 1000 first hits
     if (!cursor) {
-      index.browse(this.args.state.query, {page: 1000 / 20 + 1, hitsPerPage: 20}, appendBrowsedResults.bind(this));
+      index.browse(this.args.state.query, {
+        page: 1000 / 20 + 1,
+        hitsPerPage: 20
+      }, appendBrowsedResults.bind(this));
     } else {
       index.browseFrom(cursor, appendBrowsedResults.bind(this));
     }
@@ -118,7 +129,6 @@ function infiniteScrollWidget(options) {
     },
 
     render: function (args) {
-
       helper = args.helper;
       page = args.state.page;
       nbPages = args.results.nbPages;
@@ -141,7 +151,6 @@ function infiniteScrollWidget(options) {
         }
         window.addEventListener('scroll', searchNewRecords.bind(scope));
       }
-
     }
   };
 }
