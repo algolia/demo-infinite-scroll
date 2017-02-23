@@ -20,7 +20,9 @@ function renderTemplate(template, res) {
 }
 
 function scrolledNearBottom(el, offset) {
-  return (el.scrollHeight - el.scrollTop) < offset;
+  var bodyHeight = document.querySelector('body').clientHeight;
+  var pageHeight = document.documentElement.clientHeight;
+  return (bodyHeight - (document.documentElement.scrollTop || document.body.scrollTop) - pageHeight) < offset;
 }
 
 function searchNewRecords() {
@@ -115,6 +117,7 @@ function infiniteScrollWidget(options) {
     },
 
     render: function (args) {
+
       helper = args.helper;
       page = args.state.page;
       nbPages = args.results.nbPages;
@@ -126,11 +129,18 @@ function infiniteScrollWidget(options) {
         offset: offset
       };
 
+      initialRender(container, args, templates);
+
       if (args.results.nbHits) {
+        var bodyHeight = document.querySelector('body').clientHeight;
+        var pageHeight = document.documentElement.clientHeight;
+
+        if (bodyHeight < pageHeight) {
+          searchNewRecords.call(scope);
+        }
         window.addEventListener('scroll', searchNewRecords.bind(scope));
       }
 
-      initialRender(container, args, templates);
     }
   };
 }
