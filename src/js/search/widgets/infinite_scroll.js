@@ -66,8 +66,9 @@ function appendSearchResults(err, res, state) {
 function addBrowsedRecords() {
   if (!loading) {
     loading = true;
+    // Skip the 1000 first hits
     if (!cursor) {
-      index.browse(this.args.state.query, {page: 0, hitsPerPage: 20}, appendBrowsedResults.bind(this));
+      index.browse(this.args.state.query, {page: 1000 / 20 + 1, hitsPerPage: 20}, appendBrowsedResults.bind(this));
     } else {
       index.browseFrom(cursor, appendBrowsedResults.bind(this));
     }
