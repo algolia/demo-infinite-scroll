@@ -19,18 +19,28 @@ function renderTemplate(template, res) {
   return results;
 }
 
-function scrolledNearBottom(el, offset) {
-  return (el.scrollHeight - el.scrollTop) < offset;
+function scrolledNearBottom(contentHeight, containerHeight, scrollTop, offset) {
+  return (contentHeight - scrollTop - containerHeight) < offset;
+}
+
+function isSearchTriggered(offset) {
+  var body = document.querySelector('body');
+  return scrolledNearBottom(
+    body.clientHeight,
+    document.documentElement.clientHeight,
+    body.scrollTop || document.documentElement.scrollTop,
+    offset
+  );
 }
 
 function searchNewRecords() {
-  if (scrolledNearBottom(document.querySelector('body'), this.offset)) {
+  if (isSearchTriggered(this.offset)) {
     addSearchedRecords.call(this);
   }
 }
 
 function browseNewRecords() {
-  if (scrolledNearBottom(document.querySelector('body'), this.offset)) {
+  if (isSearchTriggered(this.offset)) {
     addBrowsedRecords.call(this);
   }
 }
@@ -64,8 +74,12 @@ function appendSearchResults(err, res, state) {
 function addBrowsedRecords() {
   if (!loading) {
     loading = true;
+    // Skip the 1000 first hits
     if (!cursor) {
-      index.browse(this.args.state.query, {page: 0, hitsPerPage: 20}, appendBrowsedResults.bind(this));
+      index.browse(this.args.state.query, {
+        page: 1000 / 20 + 1,
+        hitsPerPage: 20
+      }, appendBrowsedResults.bind(this));
     } else {
       index.browseFrom(cursor, appendBrowsedResults.bind(this));
     }
@@ -126,11 +140,17 @@ function infiniteScrollWidget(options) {
         offset: offset
       };
 
+      initialRender(container, args, templates);
+
       if (args.results.nbHits) {
+        var bodyHeight = document.querySelector('body').clientHeight;
+        var pageHeight = document.documentElement.clientHeight;
+
+        if (bodyHeight < pageHeight) {
+          searchNewRecords.call(scope);
+        }
         window.addEventListener('scroll', searchNewRecords.bind(scope));
       }
-
-      initialRender(container, args, templates);
     }
   };
 }
