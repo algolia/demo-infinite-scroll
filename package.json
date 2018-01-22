@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "instantsearch.js": "^1.11.1",
-    "jquery": "^2.1.4",
+    "jquery": "~> 3.0.0",
     "lodash": "^3.10.1",
     "mustache": "^2.2.1"
   }
